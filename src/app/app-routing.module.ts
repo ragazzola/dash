@@ -1,10 +1,23 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { DashComponent } from './dash/dash.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'dash',
+    pathMatch: 'full'
+  },
+  {
+    path: 'dash', component: DashComponent ,
+  }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
